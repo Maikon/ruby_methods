@@ -7,12 +7,14 @@
 
 `::try_convert` *this method tries to convert an object into an array using `to_ary` method. It returns the converted array or `nil` if the object cannot be converted for any reason i.e `Array.try_convert(['blah']) --> ['blah'], Array.try_convert(1) --> nil`. This is useful when checking if an argument is an array or not. **note** the same method can be found for the `String` class.*
 
-`#&` *otherwise known as 'set intersection'. It returns a new array containing elements that are common in both arrays leaving out any duplicates i.e `[1,1,2,3,4,5,5] & [2,1,5] --> [1,2,5]` **note** the order is preserved from the original array. It compares elements using their hash and eql? methods. Similar to the `uniq` method.*
+`#&` *known as 'set intersection'. It returns a new array containing elements that are common in both arrays leaving out any duplicates i.e `[1,1,2,3,4,5,5] & [2,1,5] --> [1,2,5]` **note** the order is preserved from the original array. It compares elements using their hash and eql? methods. Similar to the `uniq` method.*
 
-`#*` *otherwise known as 'repetition'. Comes in two flavors. If it's passed with an int argument i.e `[2,1,5] * 2` it returns a new array with built by adding the int copies `[2,1,5,2,1,5]`. If instead of int is passed with a string i.e `[2,1,5] * '.'` it returns a new string `'2.1.5'` similar to using the `ary.join(str)` method*
+`#*` *known as 'repetition'. Comes in two flavors. If it's passed with an int argument i.e `[2,1,5] * 2` it returns a new array with built by adding the int copies `[2,1,5,2,1,5]`. If instead of int is passed with a string i.e `[2,1,5] * '.'` it returns a new string `'2.1.5'` similar to using the `ary.join(str)` method*
 
-#+
-#-
+`#+` *known as 'concatenation'. Returns a new array built by adding two arrays together to produce a third array i.e `[1,2,3] + [4,5,6] --> [1,2,3,4,5,6]` similar to the #concat method*
+
+`#-` *known as 'difference'. Returns a new array which is a copy of the first array minus the elements that are common in both arrays excluding doubles i.e `[1,1,2,3,4,4,5,6,6] - [4,5,6] --> [1,1,2,3]`. Compares elements using their hash and eql? method.*
+
 #<<
 #<=>
 #==
