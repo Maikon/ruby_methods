@@ -1,4 +1,4 @@
-`::[]` *creates new array with given objects -> `Array.[](1,2,'name')`*
+`::[]` *creates new array with given objects -> `Array.[](1,2,'name') --> [1,2,'name']`*
 
 `::new` *comes in three variations. The first one is `Array.new(size = 0, obj = nil)` where it creates a new array with the specified size, populated with the same object passed as a second argument i.e `Array.new(3,'Hi!') --> ['Hi!','Hi!','Hi!']`. __Note:__ The second parameter, the object in this case, will be used as the value for all the array elements. A change to one of them, affects all of them: `c = Array.new(2, Hash.new) --> [{},{}] --> c[0]['nino'] = 'hola' --> [{'nino' => 'hola'},{'nino' => 'hola'}]`* 
 *If none of those two are provided, it will return an empty array.*
@@ -12,23 +12,29 @@
 
 `::try_convert` *this method tries to convert an object into an array using `to_ary` method. It returns the converted array or `nil` if the object cannot be converted for any reason i.e `Array.try_convert(['blah']) --> ['blah'], Array.try_convert(1) --> nil`. This is useful when checking if an argument is an array or not. __Note:__ the same method can be found for the `String` class.*
 
-`#&` *known as 'set intersection'. It returns a new array containing elements that are common in both arrays leaving out any duplicates i.e `[1,1,2,3,4,5,5] & [2,1,5] --> [1,2,5]` __Note:__ the order is preserved from the original array. It compares elements using their hash and eql? methods. Similar to the `uniq` method.*
+`#&` *'set intersection'. It returns a new array containing elements that are common in both arrays leaving out any duplicates i.e `[1,1,2,3,4,5,5] & [2,1,5] --> [1,2,5]` __Note:__ the order is preserved from the original array. It compares elements using their hash and eql? methods. Similar to the `uniq` method.*
 
-`#*` *known as 'repetition'. Comes in two flavors. If it's passed with an int argument i.e `[2,1,5] * 2` it returns a new array with built by adding the int copies `[2,1,5,2,1,5]`. If instead of int is passed with a string i.e `[2,1,5] * '.'` it returns a new string `'2.1.5'` similar to using the `ary.join(str)` method*
+`#*` *'repetition'. Comes in two flavors. If it's passed with an int argument i.e `[2,1,5] * 2` it returns a new array with built by adding the int copies `[2,1,5,2,1,5]`. If instead of int is passed with a string i.e `[2,1,5] * '.'` it returns a new string `'2.1.5'` similar to using the `ary.join(str)` method*
 
-`#+` *known as 'concatenation'. Returns a new array built by adding two arrays together to produce a third array i.e `[1,2,3] + [4,5,6] --> [1,2,3,4,5,6]` similar to the #concat method*
+`#+` *'concatenation'. Returns a new array built by adding two arrays together to produce a third array i.e `[1,2,3] + [4,5,6] --> [1,2,3,4,5,6]` similar to the #concat method*
 
-`#-` *known as 'difference'. Returns a new array which is a copy of the first array minus the elements that are common in both arrays excluding doubles i.e `[1,1,2,3,4,4,5,6,6] - [4,5,6] --> [1,1,2,3]`. Compares elements using their hash and eql? method.*
+`#-` *'difference'. Returns a new array which is a copy of the first array minus the elements that are common in both arrays excluding doubles i.e `[1,1,2,3,4,4,5,6,6] - [4,5,6] --> [1,1,2,3]`. Compares elements using their hash and eql? method.*
 
-`#<<` *known as 'append'. It pushes the object that's passed to it, to the end of the array i.e:* 
+`#<<` *'append'. It pushes the object that's passed to it, to the end of the array i.e:* 
 `[1,2,3] << [4,5] << 'wow' --> [1,2,3,4,5,'wow']` *worth noting that this CHANGES the original array, it does not create a copy of it.*
+
+`#<=>` *'comparison'. This returns an integer, -1, 0, 1 if the array_1 is less than, equal to or greater than array_2 i.e --> `array_1 = [1,2,3], array_2 = [1,2,4] --> array_1 <=> array_2 --> -1 `. If the two values cannot be compared, it returns nil. The comparison works through the elements of the arrays, the first two that are not equal, will determine the value for the whole comparison. If the values are equal it will try and compare them using each array's length.*
+
+`#==` *'equality'. Returns True or False when checking if two arrays contain the same number of elements and if those elements equal each other from each array i.e:* 
+`array_1 = [1,2,'a'], array_2 = [1,2,'a'] --> array_1 == array_2 --> True`
+
+`#[]` *'element reference'. Various options, returns a new array or specific object depending on the parameters:* 
+*`array = [1,2,3,4,5,6]` 1)`array[1] --> 2`, 2) `array[1,3] --> [2,3,4]`, 3) `array[3..5] --> [4,5,6]`*
+*4) `array.slice(3) --> 4`, 5) `array.slice(2,4) --> [3,4,5,6]` 6) `array.slice(2..4) --> [3,4,5]`*
 
 #####*Rest to follow...*
 
-`#<=>`
 
-`#==`
-`#[]`
 `#[]=`
 `#assoc`
 `#at`
