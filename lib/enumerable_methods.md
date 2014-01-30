@@ -16,9 +16,16 @@
 
 `#collect_concat` *__Note__: same thing as __flat_map__ method. Returns a new array with the concatenated results of running block once for each element. In other words if you do this: `[1,2,3,4,5].collect_concat { |x| 100 + x }` it will return: `[101,102,103,104,105]`*
 
-`#count`
+`#count` *This one returns the number of items in an enum: `[1,2,3,4,5].count --> 5`*
+*If passed an argument it will scan the enum and return the number of times the argument appears:* 
+*`[1,2,1,3,4].count(1) --> 2`. This works with other types of data too: `['hi',1,2,'hi',3,'hi'].count('hi') --> 3`*
+*It can also be passed a block: `[1,2,3,4,5].count { |x| x > 4 } --> 1`, in this case returning amount of instances that match the condition, only 5 is greater than 4, thus 1 instance.*
 
-`#cycle`
+`#cycle` *This is quite interesting. With cycle you essentially call a block a x amount of times or let it run forever if you feel adventurous or just bored. So things like this are possible `[1,2,3,4,5].cycle(2) { |x| puts x } --> 1, 2, 3, 4, 5, 1, 2, 3, 4, 5`. If run it without the parameter (2) it will keep running forever. This can be useful when you create an object that will return the next value in a repeating sequence:*
+*`heroes = ['captain america', 'thor', 'iron man', 'black panther'].cycle`*
+*`heroes.next --> 'captain america'` or do some chaining: `heroes.next.upcase --> 'THOR'`*
+*__Note__: Once you reach the end of the array it will start from the beginning again.*
+*A cool thing you can do is say you're in the middle: `heroes.next --> 'thor'` and suddenly you decide you want to start from the beginning of the array, you can call `rewind`: `heroes.rewind` and it will reset the enumerator to start from the beginning.*
 
 `#detect`
 
