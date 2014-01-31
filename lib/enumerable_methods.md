@@ -27,7 +27,13 @@
 *__Note__: Once you reach the end of the array it will start from the beginning again.*
 *A cool thing you can do is say you're in the middle: `heroes.next --> 'thor'` and suddenly you decide you want to start from the beginning of the array, you can call `rewind`: `heroes.rewind` and it will reset the enumerator to start from the beginning.*
 
-`#detect`
+`#detect` *__Note__: `detect` and `find` do the same thing. It returns the first value that meets the criteria: `(1..20).detect { |x| x > 9 } --> 10`. If no value matches the criteria it will return nil: `(1..20).detect { |x| x > 100 } --> nil`*
+*You can pass `detect` and argument which will be either a lambda or a Proc and which will be called if no value matches the conditions:*
+`number = Proc.new do`
+                    `n = [101]`
+                    `"#{n} is a good example!"`
+`(1..20).detect(number) { |x| x > 100} --> "101 is a good example!"`
+*In the above case detect after seeing that not value meets the criteria, proceeds to call the number proc in this case which returns it's value.*
 
 `#drop`
 
