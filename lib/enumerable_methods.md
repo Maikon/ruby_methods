@@ -35,9 +35,10 @@
 `(1..20).detect(number) { |x| x > 100} --> "101 is a good example!"`
 *In the above case detect after seeing that not value meets the criteria, proceeds to call the number proc in this case which returns it's value.*
 
-`#drop`
+`#drop` *With this method you can as the name states, drop a number of specified items from the beginning of collection and a return a new array with the remaining ones. This applied on an array:* 
+*`a = [1,2,3,4,5]` --> `b = a.drop(2) --> [3,4,5]`* 
 
-`#drop_while`
+`#drop_while` *Similar to the above with a small twist. It drops the elements that match the conditions until it finds the first one that doesn't meet the conditions (returns false) and returns an array starting from that point onwards: `[1,2,3,1,2,0].drop_while { |x| x < 3 } --> [3,1,2,0]`. In plain english this is saying "keep dropping items until you find the first that has what I want. In this case, keep dropping while the item in question is less than 3. If the item is not less than 3, stop there and return that with the rest if any."*
 
 
 `#each_cons`
