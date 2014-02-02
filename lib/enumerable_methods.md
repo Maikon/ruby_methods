@@ -41,7 +41,9 @@
 `#drop_while` *Similar to the above with a small twist. It drops the elements that match the conditions until it finds the first one that doesn't meet the conditions (returns false) and returns an array starting from that point onwards: `[1,2,3,1,2,0].drop_while { |x| x < 3 } --> [3,1,2,0]`. In plain english this is saying "keep dropping items until you find the first that has what I want. In this case, keep dropping while the item in question is less than 3. If the item is not less than 3, stop there and return that with the rest if any."*
 
 
-`#each_cons`
+`#each_cons` *Takes a number as an argument and iterates the given block for each array of consecutive elements:*
+*`[1,2,3,4,5].each_cons(3) { |x| puts x } --> [1,2,3], [2,3,4], [3,4,5]`*
+*If I understand this properly in plain english what it does is taking the argument and number, creates arrays containing the number of elements specified with the argument and which are consecutive. So on first iteration, 1 is followed by 2 and 3, which makes 3 elements total, then 2 is followed by 3 and 4 which makes it 3 again and so on...*
 
 `#each_entry`
 
