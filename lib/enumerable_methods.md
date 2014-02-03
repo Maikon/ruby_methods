@@ -45,7 +45,15 @@
 *`[1,2,3,4,5].each_cons(3) { |x| puts x } --> [1,2,3], [2,3,4], [3,4,5]`*
 *If I understand this properly in plain english what it does is taking the argument and number, creates arrays containing the number of elements specified with the argument and which are consecutive. So on first iteration, 1 is followed by 2 and 3, which makes 3 elements total, then 2 is followed by 3 and 4 which makes it 3 again and so on...*
 
-`#each_entry`
+`#each_entry` *I'm trying to see the usefulness of this one. It basically calls the block once for each element in self, passing that element as a parameter which converts mutliple values from yield to an array:*
+*`class Boo`*
+  *`include Enumerable`*
+  *`def each`*
+  *`yield 'hi'`*
+  *`yield 'hello', 1`*
+  *`end`*
+*`end`*
+*`Boo.new.each_entry { |x| p x } --> "hi", ["hello", 1]`*
 
 `#each_slice`
 
