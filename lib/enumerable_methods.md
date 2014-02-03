@@ -1,6 +1,6 @@
 #####*Descriptions to follow...*
 
-`#all?` *passes each element to the block and it returns true if no false or nil occurs within the block. This would be used the way I see it, to check whether each of the values meets a certain condition specified in the block `[1,2,3,4,5].all? { |x| x.is_a?(Fixnum) } --> true`.* 
+`#all?` *passes each element to the block and it returns true if no false or nil occurs within the block. This would be used the way I see it, to check whether each of the values meets a certain condition specified in the block `[1,2,3,4,5].all? { |x| x.is_a?(Fixnum) } --> true`.*
 *Similar example returning false `[1,2,3,4,'5'].all? { |x| x.is_a?(Fixnum) } --> false, since '5' is not a Fixnum.`.*
 
 `#any?` *passes each element to the block and checks to say whether any of the elements meets the condition in the block. If it does it returns true. Taking the example from above `[1,2,3,4,'5'].any { |x| x.is_a?(String) } --> true`*
@@ -8,7 +8,7 @@
 `#chunk` *this one looks like it needs ALOT of playing around with. Will return back to it.*
 
 `#collect` *returns a new array with the result of running the block once for each element in the enum.*
-*i.e `a = [1,2,3,4,5]` then `f = a.collect { |x| "Kowabunga #{x}!" }` will set the value of f to:* 
+*i.e `a = [1,2,3,4,5]` then `f = a.collect { |x| "Kowabunga #{x}!" }` will set the value of f to:*
 *`['Kowabunga 1!','Kowabunga 2!','Kowabunga 3!','Kowabunga 4!','Kowabunga 5!']`*
 *__Note__: using a bang(!) will alter the original array thus wont return a new array.*
 *Doing the same as above but with a !: `a.collect! { |x| "Kowabunga #{x}!" }` will make a:*
@@ -17,7 +17,7 @@
 `#collect_concat` *__Note__: same thing as __flat_map__ method. Returns a new array with the concatenated results of running block once for each element. In other words if you do this: `[1,2,3,4,5].collect_concat { |x| 100 + x }` it will return: `[101,102,103,104,105]`*
 
 `#count` *This one returns the number of items in an enum: `[1,2,3,4,5].count --> 5`*
-*If passed an argument it will scan the enum and return the number of times the argument appears:* 
+*If passed an argument it will scan the enum and return the number of times the argument appears:*
 *`[1,2,1,3,4].count(1) --> 2`. This works with other types of data too: `['hi',1,2,'hi',3,'hi'].count('hi') --> 3`*
 *It can also be passed a block: `[1,2,3,4,5].count { |x| x > 4 } --> 1`, in this case returning amount of instances that match the condition, only 5 is greater than 4, thus 1 instance.*
 
@@ -35,8 +35,8 @@
 `(1..20).detect(number) { |x| x > 100} --> "101 is a good example!"`
 *In the above case detect after seeing that not value meets the criteria, proceeds to call the number proc in this case which returns it's value.*
 
-`#drop` *With this method you can as the name states, drop a number of specified items from the beginning of collection and a return a new array with the remaining ones. This applied on an array:* 
-*`a = [1,2,3,4,5]` --> `b = a.drop(2) --> [3,4,5]`* 
+`#drop` *With this method you can as the name states, drop a number of specified items from the beginning of collection and a return a new array with the remaining ones. This applied on an array:*
+*`a = [1,2,3,4,5]` --> `b = a.drop(2) --> [3,4,5]`*
 
 `#drop_while` *Similar to the above with a small twist. It drops the elements that match the conditions until it finds the first one that doesn't meet the conditions (returns false) and returns an array starting from that point onwards: `[1,2,3,1,2,0].drop_while { |x| x < 3 } --> [3,1,2,0]`. In plain english this is saying "keep dropping items until you find the first that has what I want. In this case, keep dropping while the item in question is less than 3. If the item is not less than 3, stop there and return that with the rest if any."*
 
@@ -55,7 +55,9 @@
 *`end`*
 *`Boo.new.each_entry { |x| p x } --> "hi", ["hello", 1]`*
 
-`#each_slice`
+`#each_slice` *VERY useful. iterates the given block on each slice of <n> elements which is passed as an argument:*
+`[1,2,3,4,5,6].each_slice(3) { |x| p x } --> [1,2,3], [4,5,6]`
+*It essentially creates slices with the corresponding number of elements specified as an argument*
 
 `#each_with_index`
 
