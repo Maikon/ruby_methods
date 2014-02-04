@@ -59,7 +59,23 @@
 `[1,2,3,4,5,6].each_slice(3) { |x| p x } --> [1,2,3], [4,5,6]`
 *It essentially creates slices with the corresponding number of elements specified as an argument*
 
-`#each_with_index`
+`#each_with_index` *This one is similar to .each with the difference that when you pass it a block it also accepts an extra argument and returns the index of the item:*
+*`['thor','cap','hulk','panther','hawkey'].each_with_index { |item, index| puts "#{item} is located at #{index} index" }`* *will return:*
+`thor is located at 0 index`
+`cap is located at 1 index`
+`hulk is located at 2 index`
+`panther is located at 3 index`
+`hawkey is located at 4 index`
+*You can also do cool things like this:*
+*`['thor','cap','hulk','panther','hawkey'].each_with_index { |item, index| puts "First letter of #{item} is (#{item[0].capitalize}) and it's located at #{index} index" }` which will produce:*
+`First letter of thor is (T) and it's located at 0 index`
+`First letter of cap is (C) and it's located at 1 index`
+`First letter of hulk is (H) and it's located at 2 index`
+`First letter of panther is (P) and it's located at 3 index`
+`First letter of hawkey is (H) and it's located at 4 index`
+*If no block is given, it will return an Enumerator which can come handy:*
+*`hero_list = ['thor','cap','hulk','panther','hawkey'].each_with_index`*
+*`hero_list.next => [thor,0]`*
 
 `#each_with_object`
 
