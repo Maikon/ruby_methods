@@ -77,7 +77,7 @@
 *`hero_list = ['thor','cap','hulk','panther','hawkey'].each_with_index`*
 *`hero_list.next => [thor,0]`*
 
-`#each_with_object`
+`#each_with_object` **
 
 `#entries`
 
